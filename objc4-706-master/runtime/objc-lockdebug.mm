@@ -168,6 +168,9 @@ lockdebug_mutex_unlock(mutex_t *lock)
     // empty
 }
 
+extern "C" void os_unfair_lock_assert_owner(os_unfair_lock *);
+extern "C" void os_unfair_lock_assert_not_owner(os_unfair_lock *);
+
 void
 lockdebug_mutex_assert_locked(mutex_t *lock)
 {

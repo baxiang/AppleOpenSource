@@ -5449,6 +5449,9 @@ class_replaceMethod(Class cls, SEL name, IMP imp, const char *types)
     return addMethod(cls, name, imp, types ?: "", YES);
 }
 
+/*
+ CR_Class class 添加 ivar
+ */
 
 /***********************************************************************
 * class_addIvar
@@ -5459,8 +5462,10 @@ BOOL
 class_addIvar(Class cls, const char *name, size_t size, 
               uint8_t alignment, const char *type)
 {
+    // 如果 cls 为空 return NO;
     if (!cls) return NO;
 
+    
     if (!type) type = "";
     if (name  &&  0 == strcmp(name, "")) name = nil;
 
